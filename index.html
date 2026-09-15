@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MySpace.com - gimmethatblueshi - Male, 21 - ALBUQUERQUE, NEW MEXICO</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/6/6c/MySpace_logo.png" type="image/png">
+</head>
+<body>
+
+  <!-- Retro Top Navigation Bar -->
+  <header class="top-nav">
+    <div class="nav-container">
+      <div class="logo-search">
+        <span class="myspace-logo">MySpace.com</span>
+        <span class="sub-logo">| a place for friends</span>
+        <input type="text" class="search-input" placeholder="Search MySpace...">
+        <button class="search-btn">Search</button>
+      </div>
+      <nav class="nav-links">
+        <a href="#">Home</a> |
+        <a href="#">Browse</a> |
+        <a href="#">Search</a> |
+        <a href="#">Invite</a> |
+        <a href="#">Film</a> |
+        <a href="#">Mail</a> |
+        <a href="#">Blog</a> |
+        <a href="#">Favorites</a> |
+        <a href="#">Forum</a> |
+        <a href="#">Groups</a> |
+        <a href="#">Events</a> |
+        <a href="#">Videos</a> |
+        <a href="#">Music</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="main-container">
+    <!-- Marquee Banner -->
+    <marquee class="retro-marquee" scrollamount="4">
+      🔥🔥🔥 WELCOME TO CAP'N COOK'S OFFICIAL MYSPACE PAGE! 🔥 HEISENBERG APPROVED 🔥 TWAÜGHTHAMMËR TOUR DATES COMING SOON! 🔥 BITCH! 🔥🔥🔥
+    </marquee>
+
+    <!-- Header / Banner Area -->
+    <div class="profile-header-banner">
+      <h1 class="profile-title">gimmethatblueshi</h1>
+      <p class="profile-tagline">"Yo bitch! Fallacies! Fallacies! Fallacies!" ⚡⚡⚡</p>
+    </div>
+
+    <!-- Main Content Layout (2 Columns) -->
+    <div class="profile-grid">
+
+      <!-- LEFT COLUMN -->
+      <aside class="left-col">
+        <!-- User Identity Box -->
+        <div class="box user-box">
+          <h2 class="user-name">Jesse "Cap'n Cook" Pinkman</h2>
+          <div class="user-details">
+            <div class="user-photo-wrap">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="Jesse Pinkman Profile Photo" id="main-profile-pic" class="profile-pic">
+              <p class="photo-caption">"Me in the desert cookin up magic. Cap'n Cook style, BITCH!"</p>
+            </div>
+            <div class="user-info-text">
+              <p><strong>"gimmethatblueshi"</strong></p>
+
+              <p class="status-msg"><strong>Jesse is:</strong> <span>Makin' fat stacks in the lab ⚗️💵</span></p>
+              <p>Male, 21 years old</p>
+              <p>ALBUQUERQUE, NEW MEXICO</p>
+              <p>United States</p>
+              <br>
+              <p><strong>Last In:</strong> 10/14/2005</p>
+              <p><strong>Mood:</strong> Hyped ⚡</p>
+              <p><strong>MySpace URL:</strong><br><a href="#" class="profile-url">http://myspace.com/gimmethatblueshi</a></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Box -->
+        <div class="box contact-box">
+          <h3>Contacting Jesse</h3>
+          <div class="contact-grid">
+            <button class="contact-btn" onclick="alert('Message sent to gimmethatblueshi: Yo bitch!')">📩 Send Message</button>
+            <button class="contact-btn" onclick="alert('Added gimmethatblueshi to your friends list!')">➕ Add to Friends</button>
+            <button class="contact-btn" onclick="alert('Added to Favorites!')">⭐ Add to Favorites</button>
+            <button class="contact-btn" onclick="alert('Opening Instant Messenger...')">💬 Instant Message</button>
+            <button class="contact-btn" onclick="alert('Jesse blocked? No way bitch!')">🚫 Block User</button>
+            <button class="contact-btn" onclick="alert('Forwarded to friend!')">✉️ Forward to Friend</button>
+          </div>
+        </div>
+
+        <!-- Music Player Box -->
+        <div class="box player-box">
+          <h3>🎵 Cap'n Cook's 2005 MP3 Player</h3>
+          <div class="retro-player">
+            <div class="player-display">
+              <div class="track-title-scroll">
+                <span id="current-track-title">▶ NOW PLAYING: TwaüghtHammër - Fallacies (Techno Dub Remix 2005)</span>
+              </div>
+              <div class="equalizer-bars" id="eq-bars">
+                <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+              </div>
+              <div class="time-display" id="time-display">0:00 / 2:45</div>
+            </div>
+
+            <div class="player-controls">
+              <button id="btn-play" class="player-btn">▶ PLAY</button>
+              <button id="btn-pause" class="player-btn">⏸ PAUSE</button>
+              <button id="btn-stop" class="player-btn">⏹ STOP</button>
+            </div>
+
+            <div class="volume-container">
+              <label for="vol-slider">VOL:</label>
+              <input type="range" id="vol-slider" min="0" max="1" step="0.05" value="0.7">
+            </div>
+
+            <ul class="playlist" id="playlist">
+              <li class="playlist-item active" data-src="techno1">1. TwaüghtHammër - Fallacies (Techno Remix)</li>
+              <li class="playlist-item" data-src="techno2">2. Cap'n Cook - Chili P Beat Drop (Hard Rave Mix)</li>
+              <li class="playlist-item" data-src="techno3">3. Albuquerque Underground - Sci-Fi Bass Drop 2005</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Jesse's Interests -->
+        <div class="box interests-box">
+          <h3>Jesse's Interests</h3>
+          <table class="interests-table">
+            <tr>
+              <td class="table-label">General</td>
+              <td class="table-val">Chili Powder, RVs, making fat stacks, PlayStation, drawing comic book heroes, smoking weed, Science Bitch!, driving around ABQ in my Tercel</td>
+            </tr>
+            <tr>
+              <td class="table-label">Music</td>
+              <td class="table-val">TwaüghtHammër, Techno, Hardcore Rave, Underground ABQ Hip-Hop, Cypress Hill, Prodigy, The Chemical Brothers, Slipknot, Korn</td>
+            </tr>
+            <tr>
+              <td class="table-label">Movies</td>
+              <td class="table-val">Scarface, Pulp Fiction, Star Wars Episode III, Cheech & Chong, Godzilla, Dawn of the Dead</td>
+            </tr>
+            <tr>
+              <td class="table-label">Television</td>
+              <td class="table-val">Sci-Fi Channel, Beavis and Butt-Head, Adult Swim, X-Files, COPS, Dragon Ball Z</td>
+            </tr>
+            <tr>
+              <td class="table-label">Heroes</td>
+              <td class="table-val">Captain Cook, Skinny Pete, Badger, Mr. White (when he's not yellin' at me yo)</td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- Details Box -->
+        <div class="box details-box">
+          <h3>Jesse's Details</h3>
+          <table class="interests-table">
+            <tr>
+              <td class="table-label">Status:</td>
+              <td class="table-val">Single & Looking for honeys</td>
+            </tr>
+            <tr>
+              <td class="table-label">Zodiac Sign:</td>
+              <td class="table-val">Libra ♎</td>
+            </tr>
+            <tr>
+              <td class="table-label">Occupation:</td>
+              <td class="table-val">Chemist / Culinary Specialist ⚗️</td>
+            </tr>
+            <tr>
+              <td class="table-label">Education:</td>
+              <td class="table-val">J. P. Wynne High School Alum (Passed Chemistry Bitch!)</td>
+            </tr>
+          </table>
+        </div>
+
+      </aside>
+
+
+      <!-- RIGHT COLUMN -->
+      <main class="right-col">
+
+        <!-- Blurbs Box -->
+        <div class="box blurbs-box">
+          <h3>Jesse's Blurbs</h3>
+
+          <div class="blurb-section">
+            <h4 class="blurb-title">About me:</h4>
+            <div class="blurb-content">
+              <p>Yo what is up everybody!! Welcome to my official MySpace page! My name is <strong>Jesse Pinkman</strong> but you can call me <strong>Cap'n Cook</strong>. 🧢⚡</p>
+
+              <p>I live in Albuquerque, New Mexico. If you know me, you know I ride around in my red '84 Toyota Tercel or my classic 1986 Dodge Bounder RV! We out here in the desert cookin up the purest, highest-quality product you've ever seen yo. Chili P is my secret ingredient! 🌶️⚗️</p>
+
+              <p>When I ain't in the lab or stackin' benjis, I play drums for the hardest garage band in New Mexico: <strong>TWAÜGHTHAMMËR</strong>!! Check out our hit single <em>"FALLACIES"</em> in my music player on the left!! Fallacies, fallacies, fallacies!! 🥁🎸</p>
+
+              <p>Shoutout to my boys Skinny Pete and Badger! We holdin' down the 505! CHURCH!</p>
+
+              <p class="quote-box">
+                <em>"Yo Mr. White! Science, bitch!"</em> - Me<br>
+                <em>"What's the point of making outlaw cash if you can't even spend it?"</em>
+              </p>
+            </div>
+          </div>
+
+          <div class="blurb-section">
+            <h4 class="blurb-title">Who I'd like to meet:</h4>
+            <div class="blurb-content">
+              <p>Anyone who respects the chemistry, loves techno music, wants to buy some fire glass, or just wants to chill on my couch playing PlayStation. Fine honeys hit my inbox! 📩</p>
+              <p><strong>NO DEA OR POLICE BITCHES ALLOWED ON THIS PAGE!! YOU HAVE TO TELL ME IF YOU ARE A COP OR IT'S ENTRAPMENT YO!</strong> 🚨👮‍♂️❌</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo Gallery Showcase -->
+        <div class="box photos-box">
+          <h3>📷 Jesse's Fun Selfies & Photos</h3>
+          <div class="photo-gallery">
+            <div class="photo-card">
+              <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=300&q=80" alt="Jesse and the RV">
+              <span>Chillin in the RV 🚍</span>
+            </div>
+            <div class="photo-card">
+              <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=300&q=80" alt="Jesse Jamming">
+              <span>TwaüghtHammër Rehearsal 🥁</span>
+            </div>
+            <div class="photo-card">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80" alt="Jesse selfie">
+              <span>Fresh outfit in ABQ 🧢</span>
+            </div>
+            <div class="photo-card">
+              <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=300&q=80" alt="Yo Bitch selfie">
+              <span>Yo Bitch selfie! 😎</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Jesse's Friend Space (TOP 8) -->
+        <div class="box friends-box">
+          <h3>Jesse's Friend Space</h3>
+          <p class="friends-sub"><strong>Jesse has <span class="friend-count">1,337</span> Friends.</strong></p>
+
+          <div class="top-friends-grid">
+
+            <!-- Friend 1 -->
+            <div class="friend-card">
+              <a href="#" class="friend-name">Walter White</a>
+              <span class="friend-username">i_am_d_danger</span>
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80" alt="Walter White">
+            </div>
+
+            <!-- Friend 2 -->
+            <div class="friend-card">
+              <a href="#" class="friend-name">Skinny Pete</a>
+              <span class="friend-username">stackinbenjis</span>
+              <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=200&q=80" alt="Skinny Pete">
+            </div>
+
+            <!-- Friend 3 -->
+            <div class="friend-card">
+              <a href="#" class="friend-name">Badger</a>
+              <span class="friend-username">ayoayoayo</span>
+              <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=200&q=80" alt="Badger">
+            </div>
+
+            <!-- Friend 4 -->
+            <div class="friend-card">
+              <a href="#" class="friend-name">Combo</a>
+              <span class="friend-username">hello_kitty</span>
+              <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=200&q=80" alt="Combo">
+            </div>
+
+            <!-- Friend 5 -->
+            <div class="friend-card">
+              <a href="#" class="friend-name">Jane Margolis</a>
+              <span class="friend-username">jane_tattoo_art</span>
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Jane Margolis">
+            </div>
+
+            <!-- Friend 6 -->
+            <div class="friend-card">
+              <a href="#" class="friend-name">Saul Goodman</a>
+              <span class="friend-username">itsallgoodman</span>
+              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=200&q=80" alt="Saul Goodman">
+            </div>
+
+            <!-- Friend 7 -->
+            <div class="friend-card">
+              <a href="#" class="friend-name">Tom</a>
+              <span class="friend-username">myspace_tom</span>
+              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&q=80" alt="Tom from MySpace">
+            </div>
+
+            <!-- Friend 8 -->
+            <div class="friend-card">
+              <a href="#" class="friend-name">TwaüghtHammër</a>
+              <span class="friend-username">band_official</span>
+              <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=200&q=80" alt="TwaüghtHammër Band">
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Comments Section -->
+        <div class="box comments-box">
+          <h3>Jesse's Friends Comments</h3>
+          <p class="comments-count">Displaying <span id="comments-num">4</span> of 1,337 comments (<a href="#add-comment-section">Add Comment</a>)</p>
+
+          <div class="comments-list" id="comments-list">
+
+            <!-- Comment 1 -->
+            <div class="comment-item">
+              <div class="comment-author">
+                <a href="#">Walter White (i_am_d_danger)</a>
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80" alt="Walter">
+                <span class="comment-date">10/14/2005 4:15 PM</span>
+              </div>
+              <div class="comment-body">
+                <p>Jesse, stop posting on MySpace and check your phone. We need to complete the batch before sunset. Do not add extra chili powder. We operate with precision and chemistry, not flair. Call me immediately.</p>
+              </div>
+            </div>
+
+            <!-- Comment 2 -->
+            <div class="comment-item">
+              <div class="comment-author">
+                <a href="#">Skinny Pete (stackinbenjis)</a>
+                <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=100&q=80" alt="Skinny Pete">
+                <span class="comment-date">10/13/2005 11:42 PM</span>
+              </div>
+              <div class="comment-body">
+                <p>Yo Jesse! That techno track in your player is tight as hell bro!! Church! Me and Badger are coming over with the Xbox. Get some Funons yo! 🎮🔥</p>
+              </div>
+            </div>
+
+            <!-- Comment 3 -->
+            <div class="comment-item">
+              <div class="comment-author">
+                <a href="#">Badger (ayoayoayo)</a>
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=100&q=80" alt="Badger">
+                <span class="comment-date">10/12/2005 8:20 PM</span>
+              </div>
+              <div class="comment-body">
+                <p>Yo Cap'n! Did you write that Star Trek Enterprise script idea I told you about? The teleporter logic is totally flawless bro! Hit me up on AIM!</p>
+              </div>
+            </div>
+
+            <!-- Comment 4 -->
+            <div class="comment-item">
+              <div class="comment-author">
+                <a href="#">Saul Goodman (itsallgoodman)</a>
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=100&q=80" alt="Saul Goodman">
+                <span class="comment-date">10/10/2005 2:05 PM</span>
+              </div>
+              <div class="comment-body">
+                <p>Better Call Saul! Remember kids, if the glove doesn't fit... well, you know the rest. Jesse, remember to clean up your digital footprints. Speedy justice is my guarantee! ⚖️💼</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Add Comment Form -->
+          <div class="add-comment-form" id="add-comment-section">
+            <h4>Leave a Comment for Jesse</h4>
+            <div class="form-group">
+              <input type="text" id="comment-author-input" placeholder="Your Name / MySpace Handle" class="form-input">
+            </div>
+            <div class="form-group">
+              <textarea id="comment-text-input" placeholder="Yo Jesse, say something cool..." class="form-textarea" rows="3"></textarea>
+            </div>
+            <button id="submit-comment-btn" class="form-btn">Post Comment Bitch!</button>
+          </div>
+
+        </div>
+
+      </main>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="retro-footer">
+      <p>About | FAQ | Terms | Privacy | Safety Tips | Contact MySpace | Report Abuse</p>
+      <p>© 2003-2005 MySpace.com. All Rights Reserved. Profile customized by Cap'n Cook ⚡</p>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
