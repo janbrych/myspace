@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let volumeNode = null;
   let masterVolume = 0.7;
 
-  // DOM Elements
+  // DOM Elements - Audio Player
   const btnPlay = document.getElementById('btn-play');
   const btnPause = document.getElementById('btn-pause');
   const btnStop = document.getElementById('btn-stop');
@@ -18,12 +18,123 @@ document.addEventListener('DOMContentLoaded', () => {
   const volSlider = document.getElementById('vol-slider');
   const playlistItems = document.querySelectorAll('.playlist-item');
 
-  // Comment Elements
+  // DOM Elements - Comment Section
   const commentAuthorInput = document.getElementById('comment-author-input');
   const commentTextInput = document.getElementById('comment-text-input');
   const submitCommentBtn = document.getElementById('submit-comment-btn');
   const commentsList = document.getElementById('comments-list');
   const commentsNum = document.getElementById('comments-num');
+
+  // DOM Elements - Interactive Order Glass Window Widget
+  const openOrderBtn = document.getElementById('open-order-btn');
+  const closeOrderBtn = document.getElementById('close-order-btn');
+  const quickOrderBtn = document.getElementById('quick-order-btn');
+  const navOrderLink = document.getElementById('nav-order-link');
+  const orderModalOverlay = document.getElementById('order-modal-overlay');
+
+  const glassTypeSelect = document.getElementById('glass-type');
+  const glassQtySlider = document.getElementById('glass-quantity');
+  const qtyValDisplay = document.getElementById('qty-val');
+  const deliveryDropSelect = document.getElementById('delivery-drop');
+  const buyerHandleInput = document.getElementById('buyer-handle');
+  const subtotalDisplay = document.getElementById('subtotal-price');
+  const totalDisplay = document.getElementById('total-price');
+  const placeOrderBtn = document.getElementById('place-order-btn');
+
+  const orderFormCard = document.querySelector('.order-grid');
+  const orderSuccessCard = document.getElementById('order-success');
+  const successMessage = document.getElementById('success-message');
+  const resetOrderBtn = document.getElementById('reset-order-btn');
+
+  // Floating Particles Creation
+  function createCrystalParticles() {
+    const container = document.getElementById('particles');
+    if (!container) return;
+    for (let i = 0; i < 15; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.left = `${Math.random() * 100}%`;
+      particle.style.animationDelay = `${Math.random() * 8}s`;
+      particle.style.animationDuration = `${6 + Math.random() * 6}s`;
+      particle.style.width = `${4 + Math.random() * 6}px`;
+      particle.style.height = particle.style.width;
+      container.appendChild(particle);
+    }
+  }
+  createCrystalParticles();
+
+  // Order Window / Modal Handlers
+  function openOrderModal() {
+    orderModalOverlay.classList.remove('hidden');
+  }
+
+  function closeOrderModal() {
+    orderModalOverlay.classList.add('hidden');
+  }
+
+  if (openOrderBtn) openOrderBtn.addEventListener('click', openOrderModal);
+  if (quickOrderBtn) quickOrderBtn.addEventListener('click', openOrderModal);
+  if (navOrderLink) navOrderLink.addEventListener('click', (e) => { e.preventDefault(); openOrderModal(); });
+  if (closeOrderBtn) closeOrderBtn.addEventListener('click', closeOrderModal);
+
+  // Close modal when clicking overlay background
+  orderModalOverlay.addEventListener('click', (e) => {
+    if (e.target === orderModalOverlay) {
+      closeOrderModal();
+    }
+  });
+
+  // Calculate Price in Glass Window Widget
+  function updateOrderPrice() {
+    if (!glassTypeSelect || !glassQtySlider) return;
+    const selectedOption = glassTypeSelect.options[glassTypeSelect.selectedIndex];
+    const pricePerOz = parseInt(selectedOption.getAttribute('data-price') || 2000, 10);
+    const qtyOz = parseInt(glassQtySlider.value, 10);
+
+    qtyValDisplay.textContent = `${qtyOz} oz`;
+    const total = pricePerOz * qtyOz;
+    const formattedTotal = `$${total.toLocaleString()}`;
+
+    subtotalDisplay.textContent = formattedTotal;
+    totalDisplay.textContent = formattedTotal;
+  }
+
+  if (glassTypeSelect) glassTypeSelect.addEventListener('change', updateOrderPrice);
+  if (glassQtySlider) glassQtySlider.addEventListener('input', updateOrderPrice);
+
+  // Handle Place Order
+  if (placeOrderBtn) {
+    placeOrderBtn.addEventListener('click', () => {
+      const buyer = buyerHandleInput.value.trim() || 'Anonymous ABQ Buyer';
+      const qtyOz = glassQtySlider.value;
+      const productText = glassTypeSelect.options[glassTypeSelect.selectedIndex].text.split('-')[0].trim();
+      const dropLocationText = deliveryDropSelect.options[deliveryDropSelect.selectedIndex].text;
+      const totalCost = totalDisplay.textContent;
+
+      // Play chime/kick sound if audio context available
+      if (audioCtx) {
+        initAudio();
+        playKick(audioCtx.currentTime);
+      }
+
+      // Show success screen
+      successMessage.innerHTML = `Yo <strong>${escapeHTML(buyer)}</strong>! Your order for <strong>${qtyOz} oz</strong> of <strong>${escapeHTML(productText)}</strong> (${totalCost}) has been placed!<br><br>Dropoff set for: <em>${escapeHTML(dropLocationText)}</em>.<br>Skinny Pete & Badger are en route. Cash on delivery only yo! 💵⚡`;
+
+      orderFormCard.classList.add('hidden');
+      orderSuccessCard.classList.remove('hidden');
+    });
+  }
+
+  // Reset Order Form
+  if (resetOrderBtn) {
+    resetOrderBtn.addEventListener('click', () => {
+      orderSuccessCard.classList.add('hidden');
+      orderFormCard.classList.remove('hidden');
+      buyerHandleInput.value = '';
+      glassQtySlider.value = 2;
+      updateOrderPrice();
+    });
+  }
 
   // Initialize Web Audio API context
   function initAudio() {
@@ -41,6 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Play Kick Drum Sound
   function playKick(time) {
+    if (!audioCtx) return;
     const osc = audioCtx.createOscillator();
     const gain = audioCtx.createGain();
     osc.frequency.setValueAtTime(150, time);
@@ -55,6 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Play Synth Bass Note
   function playBass(time, freq) {
+    if (!audioCtx) return;
     const osc = audioCtx.createOscillator();
     const gain = audioCtx.createGain();
     osc.type = 'sawtooth';
@@ -69,6 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Play Hi-Hat
   function playHat(time) {
+    if (!audioCtx) return;
     const bufferSize = audioCtx.sampleRate * 0.05;
     const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
     const output = buffer.getChannelData(0);
@@ -124,44 +238,52 @@ document.addEventListener('DOMContentLoaded', () => {
     const totalSecs = Math.floor(now) % 165;
     const mins = Math.floor(totalSecs / 60);
     const secs = (totalSecs % 60).toString().padStart(2, '0');
-    timeDisplay.textContent = `${mins}:${secs} / 2:45`;
+    if (timeDisplay) timeDisplay.textContent = `${mins}:${secs} / 2:45`;
 
     timerId = setTimeout(audioLoop, 110); // ~135 BPM
   }
 
   // Play Button Handler
-  btnPlay.addEventListener('click', () => {
-    initAudio();
-    if (!isPlaying) {
-      isPlaying = true;
-      eqBars.classList.add('playing');
-      audioLoop();
-    }
-  });
+  if (btnPlay) {
+    btnPlay.addEventListener('click', () => {
+      initAudio();
+      if (!isPlaying) {
+        isPlaying = true;
+        eqBars.classList.add('playing');
+        audioLoop();
+      }
+    });
+  }
 
   // Pause Button Handler
-  btnPause.addEventListener('click', () => {
-    isPlaying = false;
-    eqBars.classList.remove('playing');
-    if (timerId) clearTimeout(timerId);
-  });
+  if (btnPause) {
+    btnPause.addEventListener('click', () => {
+      isPlaying = false;
+      eqBars.classList.remove('playing');
+      if (timerId) clearTimeout(timerId);
+    });
+  }
 
   // Stop Button Handler
-  btnStop.addEventListener('click', () => {
-    isPlaying = false;
-    eqBars.classList.remove('playing');
-    if (timerId) clearTimeout(timerId);
-    step = 0;
-    timeDisplay.textContent = '0:00 / 2:45';
-  });
+  if (btnStop) {
+    btnStop.addEventListener('click', () => {
+      isPlaying = false;
+      eqBars.classList.remove('playing');
+      if (timerId) clearTimeout(timerId);
+      step = 0;
+      if (timeDisplay) timeDisplay.textContent = '0:00 / 2:45';
+    });
+  }
 
   // Volume Slider Handler
-  volSlider.addEventListener('input', (e) => {
-    masterVolume = parseFloat(e.target.value);
-    if (volumeNode) {
-      volumeNode.gain.value = masterVolume;
-    }
-  });
+  if (volSlider) {
+    volSlider.addEventListener('input', (e) => {
+      masterVolume = parseFloat(e.target.value);
+      if (volumeNode) {
+        volumeNode.gain.value = masterVolume;
+      }
+    });
+  }
 
   // Playlist Items Click Handler
   playlistItems.forEach((item) => {
@@ -175,7 +297,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'techno2': '▶ NOW PLAYING: Cap\'n Cook - Chili P Beat Drop (Hard Rave Mix)',
         'techno3': '▶ NOW PLAYING: Albuquerque Underground - Sci-Fi Bass Drop 2005'
       };
-      trackTitle.textContent = titles[currentTrack] || '▶ NOW PLAYING: Jesse Pinkman - Techno Rave';
+      if (trackTitle) trackTitle.textContent = titles[currentTrack] || '▶ NOW PLAYING: Jesse Pinkman - Techno Rave';
 
       if (isPlaying) {
         step = 0;
@@ -203,7 +325,7 @@ document.addEventListener('DOMContentLoaded', () => {
       newComment.innerHTML = `
         <div class="comment-author">
           <a href="#">${escapeHTML(author)}</a>
-          <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=80" alt="Avatar">
+          <img src="images/jesse2.jpg" alt="Avatar">
           <span class="comment-date">${dateStr}</span>
         </div>
         <div class="comment-body">

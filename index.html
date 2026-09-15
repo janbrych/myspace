@@ -9,14 +9,135 @@
 </head>
 <body>
 
-  <!-- Retro Top Navigation Bar -->
+  <!-- Animated Glowing Background Elements -->
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+  <div class="crystal-particles-container" id="particles"></div>
+
+  <!-- Floating Sticky Action Trigger: Order Glass Window -->
+  <div class="floating-order-trigger" id="open-order-btn">
+    <div class="pulse-ring"></div>
+    <span class="trigger-icon">💎</span>
+    <span class="trigger-text">ORDER BLUE GLASS (99.1%)</span>
+  </div>
+
+  <!-- Interactive Order Glass Window Widget / Modal -->
+  <div class="glass-modal-overlay hidden" id="order-modal-overlay">
+    <div class="glass-window" id="glass-window">
+      <!-- Window Title Bar -->
+      <div class="window-title-bar">
+        <div class="window-title">
+          <span class="flask-icon">⚗️</span> CAP'N COOK'S LAB DISPENSARY - ORDER BLUE GLASS (99.1% PURE)
+        </div>
+        <div class="window-controls">
+          <button class="win-btn win-minimize" title="Minimize">_</button>
+          <button class="win-btn win-close" id="close-order-btn" title="Close">✕</button>
+        </div>
+      </div>
+
+      <!-- Window Body -->
+      <div class="window-body">
+        <div class="glass-banner">
+          <div class="crystal-badge">99.1% PURE CRYSTAL</div>
+          <h2>HEISENBERG BLUE GLASS™</h2>
+          <p class="tag">Cooked fresh in ABQ. The tightest, purest product in the 505, bitch!</p>
+        </div>
+
+        <div class="order-grid">
+          <!-- Left: Product Specs & Chemistry Animation -->
+          <div class="order-spec-card">
+            <div class="chemical-anim">
+              <div class="beaker">
+                <div class="bubble b1"></div>
+                <div class="bubble b2"></div>
+                <div class="bubble b3"></div>
+                <div class="fluid"></div>
+              </div>
+              <div class="crystal-display">
+                <div class="crystal-shard s1"></div>
+                <div class="crystal-shard s2"></div>
+                <div class="crystal-shard s3"></div>
+              </div>
+            </div>
+
+            <ul class="spec-list">
+              <li>⚡ <strong>Purity:</strong> 99.1% Chemically Pure</li>
+              <li>🌶️ <strong>Secret Formula:</strong> Chili P Infusion (Optional)</li>
+              <li>🚍 <strong>Source:</strong> 1986 Dodge Bounder RV / ABQ Secret Lab</li>
+              <li>📦 <strong>Discreet Delivery:</strong> Dead drop or Los Pollos Hermanos bucket</li>
+            </ul>
+          </div>
+
+          <!-- Right: Interactive Order Calculator Form -->
+          <div class="order-form-card">
+            <div class="form-row">
+              <label for="glass-type">Product Quality Select:</label>
+              <select id="glass-type" class="modern-select">
+                <option value="991" data-price="2000">💎 Heisenberg Sky Blue Glass (99.1% Pure) - $2,000 / oz</option>
+                <option value="chilip" data-price="1200">🌶️ Cap'n Cook Classic Chili P Special - $1,200 / oz</option>
+                <option value="desert" data-price="800">🌵 Desert Dust RV Batch - $800 / oz</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <label for="glass-quantity">Quantity: <span id="qty-val" class="neon-qty">2 oz</span></label>
+              <input type="range" id="glass-quantity" min="1" max="20" value="2" class="modern-slider">
+            </div>
+
+            <div class="form-row">
+              <label for="delivery-drop">ABQ Drop Location:</label>
+              <select id="delivery-drop" class="modern-select">
+                <option value="rv">🚍 Desert RV Coordinates (35°05'N 106°39'W)</option>
+                <option value="pollos">🍗 Los Pollos Hermanos - Back Alley Drop</option>
+                <option value="carwash">🚗 A1A Car Wash Storage Locker</option>
+                <option value="duplex">🏠 Jesse's House Basement (Knock 3 times)</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <label for="buyer-handle">Your Handle / Code Name:</label>
+              <input type="text" id="buyer-handle" class="modern-input" placeholder="e.g. CapnCookFan505">
+            </div>
+
+            <div class="price-summary">
+              <div class="price-line">
+                <span>Subtotal:</span>
+                <span id="subtotal-price">$4,000</span>
+              </div>
+              <div class="price-line highlight">
+                <span>TOTAL FAT STACKS:</span>
+                <span id="total-price" class="neon-total">$4,000</span>
+              </div>
+            </div>
+
+            <button id="place-order-btn" class="glow-order-btn">
+              ⚡ PLACE ORDER & STACK BENJIS BITCH! 💵
+            </button>
+          </div>
+        </div>
+
+        <!-- Order Success / Confirmation State (Hidden by default) -->
+        <div class="order-confirmation hidden" id="order-success">
+          <div class="success-icon">💰💎⚡</div>
+          <h3>CHURCH! ORDER CONFIRMED BITCH!</h3>
+          <p id="success-message">Yo, your drop for 2 oz of Sky Blue Glass is scheduled! Skinny Pete is heading to your drop location now!</p>
+          <div class="benji-stacks">💵 💵 💵 💵 💵</div>
+          <button class="win-btn-primary" id="reset-order-btn">Order More Glass ⚗️</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modern Glassmorphic Top Navigation Bar -->
   <header class="top-nav">
     <div class="nav-container">
       <div class="logo-search">
-        <span class="myspace-logo">MySpace.com</span>
-        <span class="sub-logo">| a place for friends</span>
-        <input type="text" class="search-input" placeholder="Search MySpace...">
-        <button class="search-btn">Search</button>
+        <span class="myspace-logo">MySpace<span class="logo-dot">.com</span></span>
+        <span class="sub-logo">| 2005 REVAMPED</span>
+        <div class="search-wrap">
+          <input type="text" class="search-input" placeholder="Search MySpace...">
+          <button class="search-btn">Search</button>
+        </div>
       </div>
       <nav class="nav-links">
         <a href="#">Home</a> |
@@ -27,25 +148,26 @@
         <a href="#">Mail</a> |
         <a href="#">Blog</a> |
         <a href="#">Favorites</a> |
-        <a href="#">Forum</a> |
-        <a href="#">Groups</a> |
-        <a href="#">Events</a> |
-        <a href="#">Videos</a> |
-        <a href="#">Music</a>
+        <a href="#">Music</a> |
+        <a href="#" id="nav-order-link" class="neon-link">💎 ORDER GLASS</a>
       </nav>
     </div>
   </header>
 
   <div class="main-container">
     <!-- Marquee Banner -->
-    <marquee class="retro-marquee" scrollamount="4">
-      🔥🔥🔥 WELCOME TO CAP'N COOK'S OFFICIAL MYSPACE PAGE! 🔥 HEISENBERG APPROVED 🔥 TWAÜGHTHAMMËR TOUR DATES COMING SOON! 🔥 BITCH! 🔥🔥🔥
+    <marquee class="retro-marquee" scrollamount="5">
+      🔥🔥🔥 WELCOME TO CAP'N COOK'S OFFICIAL MYSPACE PAGE! 🔥 HEISENBERG APPROVED 99.1% PURE BLUE GLASS AVAILABLE NOW! 🔥 TWAÜGHTHAMMËR TOUR DATES COMING SOON! 🔥 BITCH! 🔥🔥🔥
     </marquee>
 
-    <!-- Header / Banner Area -->
+    <!-- Header / Banner Area with Animated Blue Neon Vapor -->
     <div class="profile-header-banner">
-      <h1 class="profile-title">gimmethatblueshi</h1>
+      <div class="header-smoke-anim"></div>
+      <h1 class="profile-title glow-text">gimmethatblueshi</h1>
       <p class="profile-tagline">"Yo bitch! Fallacies! Fallacies! Fallacies!" ⚡⚡⚡</p>
+      <div class="live-glass-ticker">
+        <span class="live-dot"></span> LIVE LAB STATUS: <strong>BATCH #420 COOKING (99.1% PURITY)</strong>
+      </div>
     </div>
 
     <!-- Main Content Layout (2 Columns) -->
@@ -54,30 +176,44 @@
       <!-- LEFT COLUMN -->
       <aside class="left-col">
         <!-- User Identity Box -->
-        <div class="box user-box">
+        <div class="box user-box glass-card">
           <h2 class="user-name">Jesse "Cap'n Cook" Pinkman</h2>
           <div class="user-details">
             <div class="user-photo-wrap">
-              <img src="images/jesse.jpg" alt="Jesse Pinkman Profile Photo" id="main-profile-pic" class="profile-pic">
+              <div class="photo-glow-border">
+                <img src="images/jesse.jpg" alt="Jesse Pinkman Profile Photo" id="main-profile-pic" class="profile-pic">
+                <div class="animated-overlay-badge">99.1%</div>
+              </div>
               <p class="photo-caption">"Me cookin up magic in ABQ. Cap'n Cook style, BITCH!"</p>
             </div>
             <div class="user-info-text">
-              <p><strong>"gimmethatblueshi"</strong></p>
+              <p><strong class="user-handle-highlight">"gimmethatblueshi"</strong></p>
 
-              <p class="status-msg"><strong>Jesse is:</strong> <span>Makin' fat stacks in the lab ⚗️💵</span></p>
+              <p class="status-msg"><strong>Jesse is:</strong> <span class="status-active">Makin' fat stacks in the lab ⚗️💵</span></p>
               <p>Male, 21 years old</p>
               <p>ALBUQUERQUE, NEW MEXICO</p>
               <p>United States</p>
               <br>
-              <p><strong>Last In:</strong> 10/14/2005</p>
+              <p><strong>Last In:</strong> <span class="time-stamp">TODAY 4:20 PM</span></p>
               <p><strong>Mood:</strong> Hyped ⚡</p>
               <p><strong>MySpace URL:</strong><br><a href="#" class="profile-url">http://myspace.com/gimmethatblueshi</a></p>
             </div>
           </div>
         </div>
 
+        <!-- Interactive Glass Order Quick-Action Widget -->
+        <div class="box order-widget-box glass-card glow-border">
+          <h3>💎 QUICK DISPENSARY ORDER</h3>
+          <div class="quick-order-inner">
+            <p>Need that high grade 99.1% Heisenberg Blue? Order directly from Cap'n Cook!</p>
+            <button class="btn-quick-order" id="quick-order-btn">
+              ⚡ Open Interactive Glass Window
+            </button>
+          </div>
+        </div>
+
         <!-- Contact Box -->
-        <div class="box contact-box">
+        <div class="box contact-box glass-card">
           <h3>Contacting Jesse</h3>
           <div class="contact-grid">
             <button class="contact-btn" onclick="alert('Message sent to gimmethatblueshi: Yo bitch!')">📩 Send Message</button>
@@ -89,9 +225,9 @@
           </div>
         </div>
 
-        <!-- Music Player Box -->
-        <div class="box player-box">
-          <h3>🎵 Cap'n Cook's 2005 MP3 Player</h3>
+        <!-- Modernized Audio Player Box -->
+        <div class="box player-box glass-card">
+          <h3>🎵 Cap'n Cook's Synth Player</h3>
           <div class="retro-player">
             <div class="player-display">
               <div class="track-title-scroll">
@@ -124,7 +260,7 @@
         </div>
 
         <!-- Jesse's Interests -->
-        <div class="box interests-box">
+        <div class="box interests-box glass-card">
           <h3>Jesse's Interests</h3>
           <table class="interests-table">
             <tr>
@@ -151,7 +287,7 @@
         </div>
 
         <!-- Details Box -->
-        <div class="box details-box">
+        <div class="box details-box glass-card">
           <h3>Jesse's Details</h3>
           <table class="interests-table">
             <tr>
@@ -180,7 +316,7 @@
       <main class="right-col">
 
         <!-- Blurbs Box -->
-        <div class="box blurbs-box">
+        <div class="box blurbs-box glass-card">
           <h3>Jesse's Blurbs</h3>
 
           <div class="blurb-section">
@@ -211,30 +347,42 @@
         </div>
 
         <!-- Photo Gallery Showcase -->
-        <div class="box photos-box">
-          <h3>📷 Jesse's Photos & Gallery</h3>
+        <div class="box photos-box glass-card">
+          <h3>📷 Jesse's Photos & Lab Gallery</h3>
           <div class="photo-gallery">
             <div class="photo-card">
-              <img src="images/rv.jpg" alt="Inside the RV / Store">
+              <div class="photo-frame">
+                <img src="images/rv.jpg" alt="Inside the RV / Store">
+                <div class="photo-shine"></div>
+              </div>
               <span>Chillin in the RV 🚍</span>
             </div>
             <div class="photo-card">
-              <img src="images/cast.jpg" alt="Breaking Bad Crew">
+              <div class="photo-frame">
+                <img src="images/cast.jpg" alt="Breaking Bad Crew">
+                <div class="photo-shine"></div>
+              </div>
               <span>ABQ Crew & Homies 🤘</span>
             </div>
             <div class="photo-card">
-              <img src="images/jesse2.jpg" alt="Jesse selfie">
+              <div class="photo-frame">
+                <img src="images/jesse2.jpg" alt="Jesse selfie">
+                <div class="photo-shine"></div>
+              </div>
               <span>Fresh outfit in ABQ 🧢</span>
             </div>
             <div class="photo-card">
-              <img src="images/jesse.jpg" alt="Yo Bitch selfie">
+              <div class="photo-frame">
+                <img src="images/jesse.jpg" alt="Yo Bitch selfie">
+                <div class="photo-shine"></div>
+              </div>
               <span>Yo Bitch selfie! 😎</span>
             </div>
           </div>
         </div>
 
         <!-- Jesse's Friend Space (TOP 8) -->
-        <div class="box friends-box">
+        <div class="box friends-box glass-card">
           <h3>Jesse's Friend Space</h3>
           <p class="friends-sub"><strong>Jesse has <span class="friend-count">1,337</span> Friends.</strong></p>
 
@@ -244,63 +392,83 @@
             <div class="friend-card">
               <a href="#" class="friend-name">Walter White</a>
               <span class="friend-username">i_am_d_danger</span>
-              <img src="images/walt.jpg" alt="Walter White">
+              <div class="avatar-wrap">
+                <img src="images/walt.jpg" alt="Walter White">
+                <div class="online-indicator" title="Online"></div>
+              </div>
             </div>
 
             <!-- Friend 2 -->
             <div class="friend-card">
               <a href="#" class="friend-name">Skinny Pete</a>
               <span class="friend-username">stackinbenjis</span>
-              <img src="images/pete.jpg" alt="Skinny Pete">
+              <div class="avatar-wrap">
+                <img src="images/pete.jpg" alt="Skinny Pete">
+                <div class="online-indicator" title="Online"></div>
+              </div>
             </div>
 
             <!-- Friend 3 -->
             <div class="friend-card">
               <a href="#" class="friend-name">Badger</a>
               <span class="friend-username">ayoayoayo</span>
-              <img src="images/badger.jpg" alt="Badger">
+              <div class="avatar-wrap">
+                <img src="images/badger.jpg" alt="Badger">
+                <div class="online-indicator" title="Online"></div>
+              </div>
             </div>
 
             <!-- Friend 4 -->
             <div class="friend-card">
               <a href="#" class="friend-name">Combo</a>
               <span class="friend-username">hello_kitty</span>
-              <img src="images/cast.jpg" alt="Combo / Homies">
+              <div class="avatar-wrap">
+                <img src="images/cast.jpg" alt="Combo / Homies">
+              </div>
             </div>
 
             <!-- Friend 5 -->
             <div class="friend-card">
               <a href="#" class="friend-name">Jane Margolis</a>
               <span class="friend-username">jane_tattoo_art</span>
-              <img src="images/jane.jpg" alt="Jane Margolis">
+              <div class="avatar-wrap">
+                <img src="images/jane.jpg" alt="Jane Margolis">
+              </div>
             </div>
 
             <!-- Friend 6 -->
             <div class="friend-card">
               <a href="#" class="friend-name">Saul Goodman</a>
               <span class="friend-username">itsallgoodman</span>
-              <img src="images/saul.jpg" alt="Saul Goodman">
+              <div class="avatar-wrap">
+                <img src="images/saul.jpg" alt="Saul Goodman">
+                <div class="online-indicator" title="Online"></div>
+              </div>
             </div>
 
             <!-- Friend 7 -->
             <div class="friend-card">
               <a href="#" class="friend-name">Tom</a>
               <span class="friend-username">myspace_tom</span>
-              <img src="images/tom.jpg" alt="Tom from MySpace">
+              <div class="avatar-wrap">
+                <img src="images/tom.jpg" alt="Tom from MySpace">
+              </div>
             </div>
 
             <!-- Friend 8 -->
             <div class="friend-card">
               <a href="#" class="friend-name">TwaüghtHammër</a>
               <span class="friend-username">band_official</span>
-              <img src="images/jesse2.jpg" alt="TwaüghtHammër Band">
+              <div class="avatar-wrap">
+                <img src="images/jesse2.jpg" alt="TwaüghtHammër Band">
+              </div>
             </div>
 
           </div>
         </div>
 
         <!-- Comments Section -->
-        <div class="box comments-box">
+        <div class="box comments-box glass-card">
           <h3>Jesse's Friends Comments</h3>
           <p class="comments-count">Displaying <span id="comments-num">4</span> of 1,337 comments (<a href="#add-comment-section">Add Comment</a>)</p>
 
@@ -360,12 +528,12 @@
           <div class="add-comment-form" id="add-comment-section">
             <h4>Leave a Comment for Jesse</h4>
             <div class="form-group">
-              <input type="text" id="comment-author-input" placeholder="Your Name / MySpace Handle" class="form-input">
+              <input type="text" id="comment-author-input" placeholder="Your Name / MySpace Handle" class="modern-input">
             </div>
             <div class="form-group">
-              <textarea id="comment-text-input" placeholder="Yo Jesse, say something cool..." class="form-textarea" rows="3"></textarea>
+              <textarea id="comment-text-input" placeholder="Yo Jesse, say something cool..." class="modern-textarea" rows="3"></textarea>
             </div>
-            <button id="submit-comment-btn" class="form-btn">Post Comment Bitch!</button>
+            <button id="submit-comment-btn" class="modern-glow-btn">Post Comment Bitch!</button>
           </div>
 
         </div>
